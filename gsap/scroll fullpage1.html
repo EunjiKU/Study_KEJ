@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- CSS -->
+  <style>
+    html, body { height: 100%; margin: 0;}
+    #container { position: relative; height: 100%; overflow: hidden;}
+    section { position: absolute; width: 100%; height: 100%; font-size: 100px; color: #fff; font-weight: bold; text-align: center;}
+    .section01 { background: orange; width: 100%; height: 100%; font-size: 100px; color: #fff; font-weight: bold; text-align: center;}
+    .section02 { background: yellowgreen;}
+    .section03 { background: firebrick;}
+    .section04 { background: cornflowerblue;}
+    .section05 { background: seagreen;}
+  </style>
+</head>
+<body>
+  <div class="section01">1</div>
+  <div id="container">
+    <section class="section02">2</section>
+    <section class="section03">3</section>
+    <section class="section04">4</section>
+    <section class="section05">5</section>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+  <script>
+    $(function() {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.defaults({ease: "power1", duration: 3}); // 해당 트윈에 재정의되지 않는 한 설정 되지 않는 모든 트윈에 의해 상속되어야 하는 속성을 설정할 수 있다!
+    
+      const tl = gsap.timeline();
+      tl.from(".section03", {xPercent: -100})
+        .from(".section04", {xPercent: 100})
+        .from(".section05", {yPercent: 100});
+
+      ScrollTrigger.create({
+        animation: tl,
+        trigger: "#container",
+        start: "top top", 
+        end: "+=4000",
+        markers: true,
+        pin: true,
+        scrub: true,
+        anticipatePin: 1
+});
+    });
+  </script>
+</body>
+</html>

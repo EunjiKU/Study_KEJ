@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>header</title>
+  <!-- CSS -->
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    ul, li {list-style: none;}
+
+    body {font-size: 1.5rem;}
+
+    nav {position: sticky; top: 0; color: #fff; background-color: tan; transition: all 600ms ease-in-out;}
+    ul {display: flex; justify-content: flex-end; padding: 40px;}
+    li {margin-right: 60px;}
+    .nav-active {color: #000; background-color: #fff;}
+
+    .panel {height: 200vh; background-color: tan;}
+    p {max-width: 1200px; padding-top: 50px; margin: 0 auto;}
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact</li>
+    </ul>
+  </nav>
+  <div class="panel">
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta iste corrupti in, sed temporibus aut eligendi sapiente modi, doloribus, perspiciatis illum inventore consectetur! Obcaecati debitis praesentium dolorum! Voluptatum, debitis enim?
+    </p>
+  </div>
+  
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 🔷 create
+    ScrollTrigger.create({
+      trigger: ".panel",
+      markers: true,
+      start: "top 6%",
+      // end: "top top",
+      toggleClass: {targets: "nav", className: "nav-active"}
+    });
+  </script>
+</body>
+</html>

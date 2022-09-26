@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- CSS -->
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Signika+Negative:300,400&display=swap');
+
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: "Signika Negative", sans-serif;
+      font-weight: 300;
+      height: 400vh;
+      text-align: center;
+    }
+
+    .delayed-section {
+      position: absolute;
+      width: 30vw;
+      height: 38.87vw;
+    }
+    .delayed-section .inner-container {
+      will-change: transform;
+    }
+    .delayed-section img {
+      max-width: 100%;
+      will-change: transform;
+    }
+
+    #del1 {
+      top: 101vh;
+      left: 10vw;
+    }
+    #del2 {
+      top: 110vh;
+      left: 60vw;
+    }
+    #del3 {
+      top: 120vh;
+      left: 30vw;
+    }
+  </style>
+</head>
+<body>
+  <h1>Scroll down, mate</h1>
+
+  <div id="del1" class="delayed-section" data-scrub="0.5">
+    <div class="innerContainer">
+      <img width="575" src="https://picsum.photos/575/745?index=1" alt="">
+    </div>
+  </div>
+  <div id="del2" class="delayed-section" data-scrub="0.2">
+    <div class="innerContainer">
+      <img width="575" src="https://picsum.photos/575/745?index=2" alt="">
+    </div>
+  </div>
+  <div id="del3" class="delayed-section" data-scrub="1">
+    <div class="innerContainer">
+      <img width="575" src="https://picsum.photos/575/745?index=3" alt="">
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+  <!-- JavaScript -->
+  <script>
+    $(function(){
+      let delSections = document.querySelectorAll(".delayed-section");
+
+      delSections.forEach(section => {
+
+        let imageAnim = gsap.to(section.querySelector("img"), {
+          y: "-100vh",
+          ease: "none",
+          paused: true
+        });
+        
+        let progressTo = gsap.quickTo(imageAnim, "progress", {ease: "power3", duration: parseFloat(section.dataset.scrub) || 0.1});
+        
+        gsap.to(section.querySelector(".innerContainer"), {
+          y: "100vh",
+          ease: "none",
+          scrollTrigger: {
+            scrub: true,
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            onUpdate: self => progressTo(self.progress)
+          }
+        });
+      });
+
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pin</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+
+    section {width: 1000px; padding: 700px 0; margin: 0 auto; border: 1px solid #000;}
+    h1 {font-size: 90px;}
+    .top {position: relative; height: 800px; border: 1px solid red;}
+    .box1 {position: absolute; right: 0; top: 0; z-index: -9; width: 400px; height: 800px; background: url("./images/maple1.jpg") no-repeat 0 center / cover}
+    .bottom {margin-top: 400px; border: 1px solid blue;}
+    h2 {font-size: 80px; text-align: center;}
+  </style>
+</head>
+<body>
+  <section>
+    <div class="top">
+      <h1>WELCOME<br/>TO THE<br/>MAPLE WORLD</h1>
+      <div class="box1"></div>
+    </div>
+    <div class="bottom">
+      <h2>MAPLESTORY</h2>
+    </div>
+  </section>
+
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+  <script>
+    $(function() {
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.to(".box1", {
+        backgroundPosition: "100% center",
+        width: "100%",
+        scrollTrigger: {
+            trigger: ".top",
+            // markers: true,
+            start: "top 20%",
+            end: "bottom 30%",
+            scrub: 4,
+            pin: true,
+            pinSpacing: true,
+        }
+      });
+
+      gsap.fromTo("h2", {
+        y: 100,
+        opacity: 0,
+      }, {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        scrollTrigger: {
+            trigger: ".bottom",
+            markers: true,
+            start: "top 80%",
+            end: "bottom 30%",
+        }
+      });
+    });
+  </script>
+</body>
+</html>

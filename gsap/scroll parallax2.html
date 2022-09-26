@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- Link -->
+  <!-- https://codepen.io/GreenSock/pen/QWjjYEw -->
+
+  <!-- CSS -->
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+
+    section {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100vh;
+    }
+    .bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: gray;
+    }
+    h1 {
+      z-index: 1;
+      font-size: 3em;
+      font-weight: 400;
+      color: #fff;
+    }
+
+    
+  </style>
+</head>
+<body>
+  <section>
+    <div class="bg"></div>
+    <h1>Simple parallax sections</h1>
+  </section>
+      
+  <section>
+    <div class="bg"></div>
+    <h1>Hey look, a title</h1>
+  </section>
+
+  <section>
+    <div class="bg"></div>
+    <h1>They just keep coming</h1>
+  </section>
+
+  <section>
+    <div class="bg"></div>
+    <h1>So smooth though</h1>
+  </section>
+
+  <section>
+    <div class="bg"></div>
+    <h1>Nice, right?</h1>
+  </section>
+
+  <!-- Java Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+  <script>
+    $(function() {
+      gsap.registerPlugin(ScrollTrigger);
+
+      let getRatio = el => window.innerHeight / (window.innerHeight + el.offsetHeight);
+
+      gsap.utils.toArray("section").forEach((section, i) => {
+        section.bg = section.querySelector(".bg"); 
+
+        // section별로 랜덤으로 배경 이미지 줌!!!
+        section.bg.style.backgroundImage = `url(https://picsum.photos/1600/800?random=${i})`;
+        console.log(i);
+        
+        gsap.fromTo(section.bg, {
+          // from
+          backgroundPosition: () => i ? `50% ${-window.innerHeight * getRatio(section)}px` : "50% 0px"
+          // to
+        }, {
+          backgroundPosition: () => `50% ${window.innerHeight * (1 - getRatio(section))}px`,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            markers: true,
+            start: () => i ? "top bottom" : "top top", 
+            end: "bottom top",
+            scrub: true,
+            invalidateOnRefresh: true // to make it responsive
+          }
+        });
+
+      });
+
+    });
+  </script>
+</body>
+</html>

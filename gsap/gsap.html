@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- CSS -->
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    .box {display: flex; align-items: center; justify-content: center; width: 100px; height: 100px; margin: 10px; font-size: 24px;}
+
+    /* to */
+    .box1 {background-color: red;}
+
+    /* from */
+    .box2 {background-color: orange;}
+
+    /* fromTo */
+    .box7 {background-color: brown;}
+
+    /* timelline */
+    .box3 {background-color: pink;}
+
+    /* keyframes */
+    .box4 {background-color: green;}
+    .box5 {background-color: gold;}
+    .box6 {background-color: blue;}
+
+    /* stagger */
+    #stagger {display: flex; background-color: black;}
+    .green {background-color: green;}
+    .gray {background-color: gray;}
+    .orange {background-color: orange;}
+  </style>
+</head>
+<body>
+  <div>
+    <div class="box box1">to</div>
+    <div class="box box1">to</div>
+    <div class="box box1">to</div>
+  </div>
+  <div class="box box2">from</div>
+  <div class="box box7">fromTo</div>
+  <div class="box box3">timeline</div>
+  <div class="box box4">keyframes</div>
+  <div class="box box5">keyframes</div>
+  <div class="box box6">keyframes</div>
+  <div id="stagger">
+    <div class="box green"></div>
+    <div class="box gray"></div>
+    <div class="box orange"></div>
+    <div class="box green"></div>
+    <div class="box gray"></div>
+    <div class="box orange"></div>
+    <div class="box green"></div>
+    <div class="box gray"></div>
+    <div class="box orange"></div>
+</div>
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+  <!-- JavaScript -->
+  <script>
+    $(function(){
+      // 
+      // to
+      // +=, -=로
+      gsap.to(".box1", {x: 400, duration: 4, stagger: 4, onComplete: onComplete, onCompleteParams: ["구은지"]});
+      function onComplete(message) {console.log(message + "안녕")};
+
+      // from
+      gsap.from(".box2", {x: 400, duration: 4});
+
+      // fromTo
+      gsap.fromTo(".box7", {rotation: 360, x : 800}, {rotation: 0, x: 0, duration: 4});
+
+      // timeline
+      // 먼저 타임라인을 만든다.
+      let tl = gsap.timeline();
+
+      tl.to(".box3", {x: 100, backgrouondColor: "pink", duration: 1})
+        .to(".box3", {y: 100, backgrouondColor: "purple", duration: 1}, ">")
+        .to(".box3", {x: 0, backgrouondColor: "gold", duration: 1})
+        .to(".box3", {y: 0, backgrouondColor: "pink", duration: 1});
+
+      // pause, play, profress, reverse, timeScale
+
+
+      // keyframes
+      gsap.to(".box4", {
+        keyframes: [
+          {x: 100, backgrouondColor: "pink", duration: 1, ease: "power2.in"},
+          {y: 100, backgrouondColor: "purple", duration: 1, ease: "power2.out"},
+          {x: 0, backgrouondColor: "gold", duration: 1, ease: "power2.out"},
+          {y: 0, backgrouondColor: "pink", duration: 1, ease: "power2.in"}
+        ],
+        rotate: 360,
+        transformOrigin: "center center"
+      })
+
+      // keyframes
+      gsap.to(".box5", {
+        keyframes: {
+          "25%": {x: 100, y: 0},
+          "50%": {y: 100, x: 100},
+          "75%": {x: 0, y: 100},
+          "100%": {y: 0, x: 0},
+          easeEach: 'none'
+        },
+        duration: 4
+      });
+
+      // keyframes
+      gsap.to(".box6", {
+        keyframes: {
+          x: [0, 100, 100, 0, 0],
+          y: [0, 0, 100, 100, 0],
+          // ease: "power4.out",
+          easeEach: "power4.out"
+        },
+        duration: 4,
+      });
+
+      // stagger
+      // gsap.timeline()
+      //   .to("#stagger > .box", {duration: 1, rotation: 360, y: 100,
+      //     stagger: {
+      //       amount: 1,
+      //       from: "center"
+      //     }
+      //   })
+      //   .to("#stagger > .box", {duration: 1, rotation: 0, y: 0,
+      //     stagger: {
+      //       amount: 1,
+      //       from: "center"
+      //     }
+      //   })
+      tl2 = gsap.timeline();
+
+      tl2.to("#stagger > .box", {duration: 1, rotation: 360, y: 100,
+        stagger: {
+          amount: 1,
+          from: "center"
+        }
+      })
+        .to("#stagger > .box", {duration: 1, rotation: 0, y: 0,
+          stagger: {
+            amount: 1,
+            from: "center"
+          }
+        })
+      // 
+    });
+  </script>
+</body>
+</html>

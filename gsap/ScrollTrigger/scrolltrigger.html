@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- CSS -->
+    <style>
+      * {margin: 0; padding: 0; box-sizing: border-box;}
+
+      .div1, .div2 {height: 100vh;}
+      .div1 {background-color: pink;}
+      .div2 {background-color: salmon;}
+      .square {width: 150px;height: 20vh; background-color: fuchsia;}
+      .square2 {width: 150px;height: 20vh; background-color: blue;}
+      .red {background-color: red;}
+    </style>
+  </head>
+  <body>
+    <div class="div1"></div>
+    <div class="div2">
+      <div class="square"></div>
+      <div class="square2"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+    <script>
+      $(function() {
+        gsap.registerPlugin(ScrollTrigger);    
+        
+        gsap.to(".square", {
+          // x: 1000,
+          duration: 8,
+          scrollTrigger: {
+            trigger: ".square2",
+            toggleActions: "restart none none none none",
+            // play 재생
+            // reverse 되돌아가기
+            // restart 재시작
+            // pause 멈춤
+            // resume 멈췄던 부분에서 재생
+            // reset 리셋
+            // complete 완성 위치
+            markers: true,
+            start: "top 80%",
+            end: "top 30%",
+            scrub: 4,
+            pin: ".square",
+            // pinSpacing: false,
+            // onEnter: function() {console.log("onEnter")},
+            // onLeave: function() {console.log("onLeave")},
+            // onEnterBack: function() {console.log("onEnterBack")},
+            // onLeaveBack: function() {console.log("onLeaveBack")},
+            // onUpdate: (self) => console.log(self),
+            onToggle: (self) => console.log(self)
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
