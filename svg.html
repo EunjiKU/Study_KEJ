@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>svg</title>
+  <!-- CSS -->
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+
+    section {display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 100vh;}
+    .gold {background-color: gold;}
+    /* .black {background-color: #000;} */
+    h1 {font-size: 80px;}
+    h2 {font-size: 60px; margin-bottom: 300px;}
+
+    /* path style */
+    .progress_circle {stroke: red; stroke-linecap: round;}
+
+
+  </style>
+</head>
+<body>
+  <section class="gold"><h1>KAKAOTALK</h1></section>
+  <section class="sec2">
+    <h2>카카오톡 주가상승</h2>
+    <svg xmlns="http://www.w3.org/2000/svg" width="168.326" height="105.558" viewBox="0 0 168.326 105.558">
+      <path class="progress_chart" id="차트" d="M460.073,2113.75l26.591-23.186,27.5,9.5,25.6-32.6,34.156,4.6,18.369-33.025,29.061-23.811" transform="translate(-456.545 -2011.719)" fill="none" stroke="#fe6820" stroke-linecap="round" stroke-width="5" opacity="0.7"/>
+    </svg>
+  </section>
+  <section class="sec3 black">
+    <svg>
+      <circle class="progress_circle" cx="60" cy="60" r="54" stroke-width="12" />
+    </svg>
+  </section>
+  <section></section>
+  
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+  <script>
+    $(function() {
+      // path 갖고오기
+      var progressChart = document.querySelector('.progress_chart');
+      var progressCircle = document.querySelector('.progress_circle');
+      // path 길이
+      var svgLengthChart = progressChart.getTotalLength();
+      var svgLengthCircle = progressCircle.getTotalLength();
+      console.log(svgLengthChart);
+      console.log(svgLengthCircle);
+
+      // 🔹 stroke-dasharray
+      // 점 선 처리 속성 (홀수번째 적은 숫자는 선의 길이, 짝수번째 적은 숫자는 공백의 길이)
+      // 🔹 stroke-dashoffset
+      // 점 선을 어디서부터 보여줄지 지정하는 속성 (수치가 양수이면 왼쪽으로 이동, 수치가 음수이면 오른쪽으로 이동)
+
+      progressChart.style.strokeDasharray = svgLengthChart;
+      progressChart.style.strokeDashoffset = svgLengthChart;
+
+      progressCircle.style.strokeDasharray = svgLengthCircle;
+      progressCircle.style.strokeDashoffset = svgLengthCircle;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.to(progressChart, {
+        strokeDashoffset: 0,
+        scrollTrigger: {
+          trigger: ".sec2",
+          markers: true,
+          start: "center center",
+          toggleActions: 'play none none reverse',
+        }
+      });
+
+      gsap.to(progressCircle, {
+        strokeDashoffset: 0,
+        scrollTrigger: {
+          trigger: ".sec3",
+          markers: true,
+          start: "top 30%",
+          end: "top top",
+          toggleActions: 'play none none reverse',
+          scrub: 1,
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>

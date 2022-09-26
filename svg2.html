@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    /* .path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: dash 5s linear alternate infinite;
+    }
+    @keyframes dash {
+      from {
+        stroke-dashoffset: 822;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    } */
+    .path2 {stroke: purple; stroke-width: 10px; stroke-linecap: round;}
+  </style>
+</head>
+<body>
+  <svg viewBox="0 0 340 333">
+    <path class="path1" fill="white" stroke="black" stroke-width="4" d="M66.039,133.545c0,0-21-57,18-67s49-4,65,8
+    s30,41,53,27s66,4,58,32s-5,44,18,57s22,46,0,45s-54-40-68-16s-40,88-83,48s11-61-11-80s-79-7-70-41
+    C46.039,146.545,53.039,128.545,66.039,133.545z"/>
+  </svg>
+  <svg class="moving-circle" width="220" height="220" viewBox="0 0 168 168" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="path2" d="M163 84C163 127.63 127.63 163 84 163C40.3695 163 5 127.63 5 84C5 40.3695 40.3695 5 84 5C127.63 5 163 40.3695 163 84Z" stroke="red" stroke-width="1"/>
+  </svg>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+  <script  cript>
+      $(function() {
+        // 1️⃣
+        var path1 = document.querySelector('.path1');
+        var pathLength1 = path1.getTotalLength();
+
+        console.log(pathLength1);
+        
+        path1.style.strokeDasharray = pathLength1;
+        path1.style.strokeDashoffset = pathLength1;
+
+        gsap.to(path1, {
+          strokeDashoffset: 0,
+          duration: 5,
+          delay: 1,
+        });
+
+        
+        // 2️⃣
+        var path2 = document.querySelector(".path2");
+        var pathLength2 = path2.getTotalLength();
+
+        console.log(pathLength2);
+        
+        path2.style.strokeDasharray = pathLength2;
+        path2.style.strokeDashoffset = pathLength2;
+
+        var tl = gsap.timeline({repeat: -1});
+
+        tl.to(".path2", {strokeDashoffset: pathLength2, duration: 2})
+          .to(".path2", {strokeDashoffset: 0, duration: 2})
+          .to(".path2", {strokeDashoffset: -pathLength2, duration: 2})
+      });
+  </script>
+</body>
+</html>
