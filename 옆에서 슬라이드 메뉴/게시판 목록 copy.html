@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시판 목록</title>
+  <!-- CSS -->
+  <style>
+    * {margin: 0; padding: 0;}
+    html {font-size: 10px;}
+    ul, li {list-style: none;}
+    a {text-decoration: none; color: inherit;}
+    table {border-collapse: collapse;}
+    caption {display: none;}
+
+    .board_wrap {width: 1000px; margin: 100px auto;}
+
+    .board_title {margin-bottom: 30px;}
+    .board_title h2 {font-size: 3rem; font-weight: bold;}
+    .board_title p {margin-top: 5px; font-size: 1.4rem;}
+
+    .board_list {width: 100%; border-top: 2px solid #000;}
+    .board_list th, .board_list td {padding: 10px; font-size: 14px;}
+    .board_list tr {border-bottom: 1px solid #ccc;}
+    .board_list td {text-align: center;}
+    .board_list tbody tr .tit {text-align: left;}
+    .board_list tbody tr .tit:hover {text-decoration: underline;}
+
+    .board_page {margin-top: 20px; font-size: 0; text-align: center;}
+    .board_page a {display: inline-block; font-size: 12px; border-radius: 100px;}
+    .board_page a ~ a {padding: 5px 10px; margin-left: 10px;}
+    .board_page .btn {background: #eee; border: 1px solid #eee;}
+    .board_page .num {font-weight: 600; border: 1px solid #ccc;}
+    .board_page .num.on {border: 1px solid #000; background-color: #000; color: #fff;}
+
+    .btn_wrap {margin-top: 30px; font-size: 0; text-align: center;}
+    .btn_wrap a {display: inline-block; min-width: 80px; padding: 10px; font-size: 1.4rem; text-align: center; border: 1px solid #000; border-radius: 2px;}
+    .btn_wrap a ~ a {margin-left: 10px;}
+    .btn_wrap a.on {color: #fff; background-color: #000;}
+
+    @media screen and (max-width: 780px){
+
+    }
+  </style>
+</head>
+<body>
+  <div class="board_wrap">
+    <!-- 타이틀 -->
+    <div class="board_title">
+      <h2>공지사항</h2>
+      <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+    </div>
+    <!-- 게시판 -->
+    <div class="board_list_wrap">
+      <table class="board_list">
+        <caption>게시판 목록</caption>
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>글쓴이</th>
+            <th>작성일</th>
+            <th>조회</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>5</td>
+            <td class="tit">
+              <a href="#">공지사항</a>
+            </td>
+            <td>관리자</td>
+            <td>2022-09-04</td>
+            <td>1226</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td class="tit">
+              <a href="#">공지사항</a>
+            </td>
+            <td>관리자</td>
+            <td>2022-09-04</td>
+            <td>1226</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td class="tit">
+              <a href="#">공지사항</a>
+            </td>
+            <td>관리자</td>
+            <td>2022-09-04</td>
+            <td>1226</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td class="tit">
+              <a href="#">공지사항</a>
+            </td>
+            <td>관리자</td>
+            <td>2022-09-04</td>
+            <td>1226</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td class="tit">
+              <a href="#">공지사항</a>
+            </td>
+            <td>관리자</td>
+            <td>2022-09-04</td>
+            <td>1226</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="board_page">
+        <a class="btn" href="#">첫 페이지</a>
+        <a class="btn" href="#">이전 페이지</a>
+        <a class="num on" href="#">1</a>
+        <a class="num" href="#">2</a>
+        <a class="num" href="#">3</a>
+        <a class="btn" href="#">다음 페이지</a>
+        <a class="btn" href="#">마지막 페이지</a>
+      </div>
+      <div class="btn_wrap">
+        <a class="on" href="#">목록</a>
+        <a href="#">수정</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
