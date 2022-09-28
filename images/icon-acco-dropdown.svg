@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="btn" transform="translate(38 -14) rotate(90)">
+    <g id="ico_dropdown" transform="translate(0 -5)">
+      <rect id="container_20" width="20" height="20" transform="translate(14 23)" fill="#f9e5c9" opacity="0"/>
+      <g id="icn" transform="translate(1701.516 -238.378) rotate(90)">
+        <path id="icn-2" data-name="icn" d="M720.133,359.615l5-5,5,5" transform="translate(-453.756 1319.9)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1.5"/>
+      </g>
+    </g>
+  </g>
+</svg>

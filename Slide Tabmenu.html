@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.2/swiper-bundle.css">
+  <style>
+    /* reset */
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif; color: #000;}
+    ul, li {list-style: none;}
+    a {text-decoration: none; color: #000;}
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+    /*  */
+    body {padding-top: 100px;}
+    .inner {max-width: 1440px; width: 100%; margin: 0 auto;}
+    @media (max-width: 1440px) {
+      .inner {margin: 0 auto; width: 90%;}
+    }
+
+    /* tab-menu */
+    .tab-menu {position: relative; padding: 10px 22px 8px 0; overflow-x: hidden;}
+    /* .tab-type1.swiper-container {position: relative; padding: 10px 30px 8px 0;} */
+    .tab-menu:before {content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: #e0e0e0;}
+    .tab-menu:after {content: ""; position: absolute; top: -2px; right: 0; z-index: 1; width: 30px; height: 100%; background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);}
+    .tab-menu .swiper-slide {display: block; padding: 0; width: auto; font-size: 16px; font-weight: 400; color: rgba(0, 0, 0, .55);}
+    .tab-menu .swiper-slide.active {color: #000; font-weight: 600;}
+    .tab-menu .swiper-slide.active:after {content: ""; position: absolute; bottom: -8px; left: 0; width: 100%; height: 2px; background: #f25130;}
+
+    @media all and (min-width: 1025px) {
+      .tab-menu {padding: 8px 0 14px;}
+      .tab-menu:after {width: 50px;}
+      .tab-menu .swiper-slide {font-size: 22px;}
+      .tab-menu .swiper-slide.active {font-weight: 600;}
+      .tab-menu .swiper-slide.active:after {bottom: -14px;}
+    }
+
+    /* tab content */
+    .tab-content {margin-top: 50px;}
+    .box {width: 100%; height: 800px; background-color: rgb(241, 241, 241);}
+    .box p {font-size: 40px; line-height: 800px; text-align: center;}
+    .box {display: none;}
+  </style>
+</head>
+<body>
+  <div class="inner">
+    <!-- tab-menu -->
+    <div class="tab-menu swiper-container">
+      <!-- ❗❗ tab-menu인데, 컨텐츠가 길어서 모바일에서 swiper로 ❗❗ -->
+      <div class="swiper-wrapper">
+        <a class="swiper-slide active" href="javascript:">전체ㅁㅁㅁㅁㅁ</a>
+        <a class="swiper-slide" href="javascript:">예약 및 결제ㅁㅁㅁㅁㅁㅁㅁㅁ</a>
+        <a class="swiper-slide" href="javascript:">프로그램ㅁㅁㅁㅁㅁㅁㅁ</a>
+        <a class="swiper-slide" href="javascript:">기타ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</a>
+      </div>
+    </div>
+
+    <!-- contents -->
+    <div class="tab-content">
+      <div class="box1 box on"><p>1번 콘텐츠입니다!</p></div>
+      <div class="box2 box"><p>2번 콘텐츠입니다!</p></div>
+      <div class="box3 box"><p>3번 콘텐츠입니다!</p></div>
+      <div class="box4 box"><p>4번 콘텐츠입니다!</p></div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.2/swiper-bundle.min.js"></script>
+  <script>
+    $(function() {
+
+      // swiper 생성
+      var tabSwiper = new Swiper(".swiper-container", {
+        slidesPerView: "auto",
+        spaceBetween: 24,
+        observer: true,
+        observeParents: true,
+        breakpoints: {
+          1024: {
+            spaceBetween: 40,
+          }
+        },
+      });
+
+      // 잘 모르겠음...
+      // $(".tab-menu.swiper-container .swiper-slide").on("click", function () {
+      //   setTimeout(function() { AOS.refresh() }, 10);
+      //   $(this).siblings().removeClass("active").attr("title", "");
+      //   $(this).addClass("active").attr("title", "현재 활성화 탭");
+      // })
+      
+      // tab-menu
+      $(".tab-content .box").eq(0).show();
+      
+      $(".tab-menu a").on("click", function() {
+        var idx = $(this).index();
+        
+        $(".tab-menu a").removeClass("active").attr("title", "");
+        $(".tab-menu a").eq(idx).addClass("active").attr("title", "현재 활성화 탭");
+        // $(".tab-menu a").removeClass("active").attr("title", "")
+        // $(".tab-menu a").eq(idx).addClass("active").attr("title", "현재 활성화 탭");
+
+        $(".tab-content .box").hide();
+        $(".tab-content .box").eq(idx).show();
+      });
+
+    });
+  </script>
+</body>
+</html>

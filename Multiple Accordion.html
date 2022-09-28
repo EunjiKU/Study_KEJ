@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>아코디언</title>
+  <style>
+    /* reset */
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif; color: #000;}
+    ul, li {list-style: none;}
+    a {text-decoration: none; color: #000;}
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+    /*  */
+    body {padding-top: 100px;}
+    .inner {max-width: 1440px; width: 100%; margin: 0 auto;}
+    @media (min-width: 1025px) {
+      .inner {margin: 0 auto; width: 96%;}
+    }
+    
+    /* 아코디언 */
+    .acco-list > li {border-top: 1px solid #ddd; transition: background-color .4s ease;}
+    .acco-list > li > a {position: relative; padding: 33px 40px 40px; display: flex; align-items: center; height: 100%;}
+    .acco-list > li > a:after {content: ""; position: absolute; right: 40px; top: 30px; width: 28px; height: 28px; background: url("./images/icon-acco-dropdown.svg") no-repeat 50% 50%; background-size: 28px 28px; transition: transform .4s ease;}
+    .acco-list > li:last-child {border-bottom: 1px solid #ddd;}
+    .acco-list > li .category {flex: 0 0 320px;padding: 0 10px 0 0;}
+    .acco-list > li .tit {padding-right: 40px; flex: 1 1 auto;}
+    .acco-list > li .tit p {font-size: 22px; font-weight: 600;}
+    .acco-list > li .tit.pin {padding: 0 40px; background: url("./images/icon-faq-pin.svg") no-repeat 0 0; background-size: 28px 28px;}
+    /* .acco-list > li .tit .file {padding-left: 26px; display: inline-block; width: 20px; height: 20px; background: url(../images/icon-file.svg) no-repeat 100% 0; vertical-align: text-top;} */
+    .acco-list > li .acco-answer {display: none; padding: 0 20% 80px 360px;}
+    .acco-list > li .acco-answer p {font-size: 18px; line-height: 28px; font-weight: 400; letter-spacing: -.04em; color: rgba(0, 0, 0, .8);}
+    /* .acco-list > li .acco-answer p img {width: 100% !important; height: auto !important;} 
+    .acco-list > li .acco-answer strong {display: block;}
+    .acco-list > li .acco-answer .ref {margin-top: 40px;}
+    .acco-list > li .file-area strong {display: inline-block; padding-right: 24px; letter-spacing: -.4px; background: url(../images/icon-file.svg) no-repeat right center;}
+    .acco-list > li .file-area .btn-wrap {margin-top: 16px;}
+    .acco-list > li .file-area .btn-wrap a {position: relative; display: inline-block; color: #000; padding-right: 24px;}
+    .acco-list > li .file-area .btn-wrap a span {position: relative; padding-bottom: 0; margin-right: 8px; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; white-space: normal; line-height: normal; line-height: 1.5;}
+    .acco-list > li .file-area .btn-wrap a span:after {content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background-color: #000;}
+    .acco-list > li .file-area .btn-wrap a img {position: absolute; top: 0; right: 0; width: 24px; height: 24px;} */
+
+    .acco-list > li.on {height: auto; background-color: #f5f5f5;}
+    .acco-list > li.on .acco-answer {display: block;}
+    .acco-list > li.on > a:after {transform: rotateZ(180deg);}
+
+    @media all and (max-width: 1200px) {
+      .acco-list > li .category {flex: 0 0 200px;}
+      .acco-list > li .acco-answer {padding: 0 10% 80px 240px;}
+    }
+    @media all and (max-width: 1024px) {
+      .acco-list > li > a {padding: 24px 16px; flex-direction: column; align-items: flex-start;}
+      .acco-list > li > a:after {right: 8px; top: 44px; width: 20px; height: 20px; background-size: 20px 20px;}
+      .acco-list > li .category {flex: none; width: 100%; padding: 0 28px 0 0;}
+      .acco-list > li .tit {margin-top: 8px; flex: none; width: 100%;}
+      .acco-list > li .tit.pin {padding: 0 28px; background-size: 20px 20px;}
+      /* .acco-list > li .tit .file {padding-left: 20px;} */
+      .acco-list > li .acco-answer {padding: 8px 16px 32px;}
+      .acco-list > li .acco-answer p {font-size: 16px; line-height: 24px; font-weight: 300; letter-spacing: -.025em; color: rgba(0, 0, 0, .8);}
+      /* .acco-list > li .acco-answer p > * {line-height: 24px;}
+      .acco-list > li .acco-answer strong {font-size: 16px; font-weight: 700;}
+      .acco-list > li .acco-answer .ref {margin-top: 24px;} */
+      /* .acco-list > li .file-area {margin-top: 32px; padding: 16px;}
+      .acco-list > li .file-area .btn-wrap a {padding-right: 20px;}
+      .acco-list > li .file-area .btn-wrap a img {width: 20px; height: 20px;}
+       */
+      /* 2022-02-04 개발서버 table css 추가 */
+      .acco-answer table tbody tr td {width: 100% !important; padding: 10px !important;}
+    }
+
+
+    /* paging */
+    .paging {display: flex; justify-content: center; margin-top: 40px; height: 48px;}
+    /* .paging .numbers {display: flex; margin: 0 24px;} */
+    .paging a {position: relative; display: flex; justify-content: center; align-items: center; margin: 0 4px; font-size: 18px; font-weight: 400; color: rgba(0, 0, 0, .55);}
+    .paging a.btn-first {margin-right: 20px;}
+    .paging a.btn-last {margin-left: 20px;}
+    .paging a canvas {position: absolute; top: 0; left: 0;}
+    .paging a.btn-number {width: 30px; height: 100%;}
+    .paging a.active {color: #000; font-weight: 700;}
+    /* .paging li.only-web {display: block;} */
+    @media all and (max-width: 1024px) {
+      .paging {margin-top: 24px; height: 40px;}
+      .paging a {margin: 0 2px;}
+      .paging a.btn-first {margin-right: 10px;}
+      .paging a.btn-lst {margin-left: 10px;}
+      .paging a img {width: 40px; height: 40px;}
+      .paging a canvas {display: none;}
+      .paging a.btn-number {width: 28px;}
+      /* .paging li.only-web {display: none;} */
+    }
+    @media all and (max-width: 320px) {
+      .paging .numbers {margin: 0 -5px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="inner">
+    <!-- 게시판 타입 : FAQ -->         
+    <ul class="acco-list">
+      <li>
+        <a href="javascript:" role="button">
+          <span class="category">기타</span>
+          <div class="tit pin">
+            <p>
+              반려견 동반이 가능한가요?
+            </p>
+          </div>
+        </a>
+        <div class="acco-answer" role="region">
+          <p></p>
+          <p>서킷 및 라운지 내에서 반려동물 출입은 제한됨을 알려 드립니다.</p>
+          <p></p>
+        </div>
+      </li>                    
+      <li>
+        <a href="javascript:" role="button">
+          <span class="category">기타</span>
+          <div class="tit">
+            <p>
+              Covid-19 관련한 방역 상황 및 체계를 알고 싶어요.
+            </p>
+          </div>
+        </a>
+        <div class="acco-answer" role="region">
+          <p></p>
+          <p>‘코로나바이러스감염증-19’와 관련해 HMG 드라이빙 익스피리언스는 고객 여러분의 안전과 건강을 최우선으로 고려한 안전한 프로그램 운영을 위해 다음과 같은 노력을 기울이고 있습니다.</p><p>1) 스텝 전원 체온 측정, 마스크 착용</p><p>2) 전체 참가 인원 입장 시 체온 측정, 마스크 착용 의무화 3) 라운지 열 감지기 카메라 설치, 실시간 모니터링 4) 라운지 수시 방역 및 손소독제 설치</p><p>5) 사전, 사후 전체 차량 방역 및 손소독제 비치 * 프로그램 참여시 마스크 착용 부탁드리며, 미착용 시 입장 및 참가에 제한이 있을 수 있습니다.</p>
+          <p>더욱 즐겁고 안전한 환경에서 참여하실 수 있도록 최선을 다하겠습니다.</p>
+          <p></p>
+        </div>
+        </li>                    
+      <li>
+        <a href="javascript:" role="button">
+          <span class="category">예약 및 결제</span>
+          <div class="tit">
+            <p>
+              결제 취소 확정 내역 및 환불은 어디에서 확인 할 수 있을까요?
+            </p>
+          </div>
+        </a>
+        <div class="acco-answer" role="region">
+          <p></p>
+          <p>결제 진행, 취소 등 상태의 경우 마이페이지에서 확인이 가능하며, 결제 취소가 완료된 프로그램의 경우 상태가 ‘결제 취소’로 변경됩니다.</p>
+          <p>결제 취소 이후 환불은 영업일 1~7일 이내에 환불이 진행되며, 각 카드사의 정책과 결제일에 따라 다를 수 있습니다.</p>
+          <p></p>
+        </div>
+      </li>               
+    </ul>
+
+    <!-- 페이지네이션 -->
+    <ul class="paging" id="pagination">
+      <li>
+        <a class="btn-first" title="첫 페이지로 이동" href="javascript:ccaCtrl.list();">
+          <img src="./images/icon-paging-first-page.svg" alt="첫 페이지 이동">
+          <canvas id="pageFirst" width="48" height="48"></canvas>
+        </a>
+      </li>
+      <li>
+        <a class="btn-number" href="javascript:">1</a>
+      </li>
+      <li>
+        <a class="btn-number" href="javascript:">2</a>
+      </li>
+      <li>
+        <a class="btn-number active" href="javascript:">3</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $(function() {
+
+      function qnaSlideFunc() {
+        // 만약 아코디언 리스트가 하나도 없으면 실행하지 말아라!!!
+        if(!document.querySelectorAll(".acco-list").length) return false;
+
+        // 아코디언 슬라이드
+        $(".acco-list li a").on("click", function() {
+        $(this).siblings(".acco-answer").slideToggle(500);
+        $(this).parent("li").toggleClass("on");
+
+        // 이건 뭔지 모르겠음
+        // if($(this).attr("class") != undefined && $(this).attr("class").indexOf("swipe") > 0) {
+        //   $(this).parent("li").hasClass("on") ? $(this).attr("aria-expanded", "true") : $(this).attr("aria-expanded", "false");
+        // };
+        });
+      }
+      qnaSlideFunc();
+      
+    });
+  </script>
+</body>
+</html>

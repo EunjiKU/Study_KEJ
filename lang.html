@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- CSS -->
+  <style>
+    /* reset */
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    a {text-decoration: none; color: #000;}
+
+    /* lang */
+    header {position: relative; width: 100%; height: 60px; background-color: lightgray;}
+    header .header_lang_area {position: absolute; right: 135px; top: 0; width: 24px; height: 60px; background-color: red;} /* util */
+    header .header_lang_area .btn_lang_cho {display: block; position: absolute; right: 0; top: 50%; margin-top: -12px; width: 24px; height: 24px; background: url("./images/btn-gnb-lang-menu.svg") center center no-repeat;}
+    header .header_lang_area .lang_w {display: none; position: absolute; left: 50%; top: 50px; transform: translate(-50%); padding: 19px; background-color: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #293148;}
+    header .header_lang_area .lang_w .lang_list {display: block; margin-top: 12px; color: #c7c7c7; font-size: 14px; text-align: center;}
+    header .header_lang_area .lang_w .lang_list:first-child {margin-top: 0;}
+    header .header_lang_area .lang_w .lang_list.on {color: #000;}
+    header .header_lang_area.on .lang_w {display: block;}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header_lang_area on">
+      <a class="btn_lang_cho" href="javascript:" title="언어 선택"></a>
+      <div class="lang_w">
+          <a class="lang_list on no_letterspacing" href="/kr/main">KOR</a>
+          <a class="lang_list  no_letterspacing" href="/en/main">ENG</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $(function() {
+      // header language
+      $("header .header_lang_area .btn_lang_cho").on("click", function(){
+        if(!$(this).parents(".header_lang_area").hasClass("on")){
+          $(this).parents(".header_lang_area").addClass("on");
+        }else{
+          $(this).parents(".header_lang_area").removeClass("on");
+        }
+      });
+
+      $('body').click(function(e){
+        if(!$(e.target).parents().hasClass("header_lang_area")){
+          $("header .header_lang_area").removeClass("on");
+        }
+      });
+    });
+  </script>
+</div>
+</body>
+</html>

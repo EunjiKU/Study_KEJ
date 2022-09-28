@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- CSS -->
+  <style>
+    /* reset */
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+
+    /* body */
+    body.stop_scroll {overflow: hidden; height: 100%; min-height: 100%; touch-action: none;}
+
+    /* 영역 */
+    section {display: flex; justify-content: center; align-items: center; height: 200vh;}
+    button {width: 300px; height: 100px;}
+
+    /* popup */
+    .popup {position: fixed; top: 0; left: 0; z-index: 100; width: 100%; height: 100vh; background-color: rgba(0, 0, 0, .6);}
+    .popup {visibility: hidden;}
+    .popup .pop_body {position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%) scale(1);/* top: 100%; left: 100%; transform: none; */padding: 64px 0 56px;width: 640px;border-radius: 8px;background: #fff;}
+    .popup .pop_body {opacity: 0;transition: opacity .5s ease;}
+    .popup .pop_body.active {opacity: 1; /* top: 50%; transform: translate(-50%, -50%) scale(1); opacity: 1; top: 100%; left: 100%; transform: none; */}
+    .cont {height: 60vh;}
+    .cont h1 {margin-bottom: 30px;}
+    .cont p {height: 50vh; overflow-y: scroll;}
+
+    .popup .pop_body .close_btn {position: absolute; top: 24px; right: 24px; display: inline-block;}
+  </style>
+</head>
+<body>
+  <!-- 영역 -->
+  <div id="wrap">
+    <section>
+      <button class="pop_btn" type="button">팝업창</button>
+    </section>
+  </div>
+
+  <!-- 팝업창 -->
+  <div class="popup">
+    <div class="pop_body">
+      <div class="cont">
+        <h1>팝업창</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab neque libero optio deleniti saepe. Officiis, perferendis culpa. Architecto dolore totam magnam laboriosam et debitis, aspernatur ex quam culpa harum labore recusandae laudantium delectus, quis quo nihil blanditiis vel libero possimus, adipisci exercitationem? Consequatur quibusdam illum laboriosam nemo consequuntur aliquam libero numquam aliquid in cumque laudantium accusantium quidem, dicta fugiat iusto eaque vitae commodi fugit optio placeat odio error ullam quis iure. Ad consectetur, numquam sequi, quia iusto hic dolorem laboriosam reiciendis exercitationem sit dolores expedita officia aliquid ipsum voluptatibus, culpa quos dignissimos deleniti nulla consequatur at. Facere placeat delectus nesciunt ratione porro consequuntur distinctio illo commodi maiores excepturi quisquam beatae eaque natus odit qui velit provident, sapiente deserunt repudiandae magnam. Nobis voluptate blanditiis aperiam quos quod repellat ipsa atque distinctio, aliquid alias deleniti magnam minus officia est nesciunt? Similique doloribus corrupti quaerat aliquam eaque repellendus earum accusantium facilis asperiores in! Quod, dolorem nesciunt fugiat quasi facilis alias tempore voluptatibus sed atque itaque molestias nisi quos soluta cupiditate deserunt architecto eveniet. Ex aut sunt officia, consequatur porro fugiat provident facere quia. Pariatur quidem vero expedita adipisci id laudantium ea. Modi iste adipisci rem laudantium, explicabo doloribus iure, consectetur itaque illum sint consequuntur, harum soluta aut. Maxime a deleniti aut sapiente eum, reiciendis voluptates quasi asperiores culpa distinctio nesciunt illum blanditiis. Repellat distinctio officia delectus eos consequuntur id! Dolor, cupiditate esse, exercitationem vel sapiente laborum voluptas eum iusto ut assumenda perferendis corrupti magni aperiam! Hic sed magnam veritatis illum minima corrupti voluptas quibusdam quaerat laboriosam cumque voluptatum numquam voluptates ut eveniet aspernatur sequi necessitatibus inventore sit ea consectetur maxime, nemo voluptate. Quis voluptas perferendis assumenda quae ipsum blanditiis corrupti sed quam doloribus, iusto est sapiente aliquid quidem, delectus beatae eligendi sunt. Tenetur officia et dolorum in? Nam, voluptatem! Totam molestias hic fugit explicabo animi accusamus, nostrum, excepturi ex incidunt illo, id rerum dolore libero sequi suscipit quaerat. Necessitatibus velit corrupti autem, libero, ex, omnis quisquam eaque ut vero quaerat nam mollitia iusto dolore tempora ullam praesentium vitae harum modi in molestias voluptatibus dolorem magnam. Optio quam officiis, sunt iste unde consectetur iusto saepe nostrum repudiandae enim commodi hic velit porro, id tempora ullam neque. Officia distinctio assumenda sunt iure qui, enim beatae quia eligendi ducimus quasi sit amet deleniti! Atque totam autem suscipit deleniti est. Veniam est earum facilis odit labore saepe soluta aspernatur optio molestias! Quasi eligendi eius quod necessitatibus, laborum hic veniam nostrum. Maxime eius impedit exercitationem dolorum quam possimus in saepe voluptate, labore sed quaerat voluptatum expedita modi cumque necessitatibus laboriosam fugiat, explicabo ipsam deleniti? Necessitatibus ullam laboriosam tenetur nostrum, officiis possimus eum at sunt perferendis natus eos quam quidem a harum vel maxime id blanditiis. Doloremque eveniet distinctio odio illo iure rem similique pariatur consectetur id dolor quo quis, est animi, aperiam itaque sint totam placeat! Quas repudiandae praesentium voluptatibus doloremque, nostrum ipsam provident a? Libero voluptate quasi corporis iusto, minus necessitatibus nostrum asperiores dolore, illum maiores eos deleniti magnam ea rerum fugiat et placeat quos labore possimus.</p>
+      </div>
+      <a class="close_btn" href="javascript:">닫기</a>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $(function() {
+      $(".pop_btn").on("click", function() {
+        // ❗❗ display: none을 하게되면 아예 DOM에서 사라지기 때문에, 접근성에 맞지 않는다. ❗❗
+        $(".popup").css("visibility", "visible");
+        $(".pop_body").addClass("active");
+        // ❗❗ 팝업창이 작동할 때 스크롤이 되는걸 막아준다. ❗❗
+        $("body").addClass("stop_scroll");
+      });
+      
+      $(".close_btn").on("click", function() {
+        $(".popup").css("visibility", "hidden");
+        $(".pop_body").removeClass("active");
+        $("body").removeClass("stop_scroll");
+      });
+    });
+  </script>
+</body>
+</html>

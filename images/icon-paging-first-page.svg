@@ -1,0 +1,10 @@
+<svg id="맨_앞으로" data-name="맨 앞으로" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g id="타원" fill="none" stroke="#000" stroke-width="1" opacity="0.195">
+    <circle cx="24" cy="24" r="24" stroke="none"/>
+    <circle cx="24" cy="24" r="23.5" fill="none"/>
+  </g>
+  <g id="icn" transform="translate(10 9)">
+    <path id="icn-2" data-name="icn" d="M0,0,6,6l6-6" transform="translate(13 9) rotate(90)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="icn-3" data-name="icn" d="M0,0,6,6l6-6" transform="translate(19 9) rotate(90)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+</svg>
