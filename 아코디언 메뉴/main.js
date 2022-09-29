@@ -10,7 +10,9 @@ $(document).ready(function() {
         $('.acc-content').slideUp();
         $('.acc-head').removeClass('active');
         $(this).siblings('.acc-content').slideToggle();
+        // $(this).siblings('.acc-content').slideDown();
         $(this).toggleClass('active');
+        // $(this).addClass('active');
       }
   });     
   });
