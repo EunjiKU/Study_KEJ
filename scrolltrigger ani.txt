@@ -1,0 +1,44 @@
+.list_card li {width: 460px; min-height: 596px; border: 1px solid #E5E5E5; border-radius: 20px; padding-bottom: 100px; overflow: hidden; margin-bottom: 100px; transform: translateY(70px); transition-duration: 0.7s; opacity: 0;}
+.list_card li.active {opacity: 1;transform: translateY(0);}
+
+<li class="scroll_motion active">...</li>
+
+
+var commonScript = (function(){
+	var _getScrollObjY = function () {
+		var _arrY = [ ];
+		$(".scroll_motion").each(function (q) {
+			_arrY.push(parseInt($(".scroll_motion").eq(q).offset().top) + ($(".colorful-bg").hasClass("scroll_motion") ? 350 : ($(window).height()/4)));
+		});
+
+	return _arrY;
+	};
+
+
+$(window).on("scroll", function() {
+	$(".scroll_motion").each(function (q) {
+		if($(window).scrollTop() + $(window).height() > _getScrollObjY()[q]){
+			$(".scroll_motion").eq(q).addClass("active");
+		}
+	});
+
+
+
+
+
+
+
+.copy_donation p:nth-of-type(1) {font-size: 32px; line-height: 42px; color: #222; opacity: 0; transform: translateY(50px); font-family: "spoqa_bold"; margin-top: -48px; word-break: keep-all;}
+.copy_donation p:nth-of-type(2) {font-size: 18px; color: #444; margin: 35px 0 25px; opacity: 0; transform: translateY(50px); word-break: keep-all;}
+.copy_donation p:nth-of-type(3) {font-size: 18px; font-family: "spoqa_medium"; color: #043B72; opacity: 0; transform: translateY(50px); word-break: keep-all;}
+
+
+   subTxtEx: function() {
+
+      if($(".copy_donation").length > 0 ){
+        gsap.to(".copy_donation p:nth-of-type(1)", {duration: 0.8, y: 0, opacity: 1, ease: Cubic.easeOut});
+        gsap.to(".copy_donation p:nth-of-type(2)", {duration: 0.8, y: 0, opacity: 1, delay: 0.3, ease: Cubic.easeOut});
+        gsap.to(".copy_donation p:nth-of-type(3)", {duration: 0.8, y: 0, opacity: 1, delay: 0.4, ease: Cubic.easeOut});
+      };
+      
+    },

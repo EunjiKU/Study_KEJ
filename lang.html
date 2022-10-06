@@ -13,7 +13,7 @@
 
     /* lang */
     header {position: relative; width: 100%; height: 60px; background-color: lightgray;}
-    header .header_lang_area {position: absolute; right: 135px; top: 0; width: 24px; height: 60px; background-color: red;} /* util */
+    header .header_lang_area {position: absolute; right: 135px; top: 0; width: 24px; height: 60px;} /* util */
     header .header_lang_area .btn_lang_cho {display: block; position: absolute; right: 0; top: 50%; margin-top: -12px; width: 24px; height: 24px; background: url("./images/btn-gnb-lang-menu.svg") center center no-repeat;}
     header .header_lang_area .lang_w {display: none; position: absolute; left: 50%; top: 50px; transform: translate(-50%); padding: 19px; background-color: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #293148;}
     header .header_lang_area .lang_w .lang_list {display: block; margin-top: 12px; color: #c7c7c7; font-size: 14px; text-align: center;}
@@ -45,8 +45,10 @@
           $(this).parents(".header_lang_area").removeClass("on");
         }
       });
+      console.log("ㅅㅇㅇ");
 
       $('body').click(function(e){
+        console.log(e.target);
         if(!$(e.target).parents().hasClass("header_lang_area")){
           $("header .header_lang_area").removeClass("on");
         }
