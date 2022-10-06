@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {padding: 100px;}
+
+    .form_checkbox {position: relative; display: inline-block; vertical-align: middle;}
+    .form_checkbox input {position: absolute; top: 0; left: 0; width: 26px; height: 26px; opacity: .001;}
+    .form_checkbox input + label {position: relative; display: inline-block; padding-left: 36px; min-height: 26px; width:auto; font-family: "spoqa_regular", sans-serif; color: #222; font-size: 18px; background: url("./images/icon-checkbox.svg") left top no-repeat; z-index: 1; vertical-align: middle;}
+    .form_checkbox input:checked + label {background: url("./images/icon-checkbox-on.svg") left top no-repeat;}
+
+    @media all and (max-width:768px) {
+      .form_checkbox input {width: 20px; height: 20px;}
+      .form_checkbox input + label {padding-left: 30px; min-height: 22px; font-size: 14px; background: url("./images/icon-checkbox.svg") left 2px no-repeat; background-size: 20px;}
+      .form_checkbox input:checked + label {background: url("./images/icon-checkbox-on.svg") left 2px no-repeat; background-size: 20px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="form_checkbox">
+    <!-- ❗ id는 겹치지않게 -->
+    <input type="checkbox" id="check0" name="" title="전체 약관 동의">
+    <label for="check0">전체 약관 동의</label>
+  </div>
+  <br><br>
+  <div class="form_checkbox">
+    <input type="checkbox" id="check1" name="" title="이용약관 동의">
+    <label for="check1">이용약관 동의</label>
+  </div>
+</body>
+</html>

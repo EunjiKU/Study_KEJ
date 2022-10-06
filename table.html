@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* ❗❗ border-collapes: collapse 넣어야 border css를 줄 수 있음 ❗❗ */
+    table {font-family: 'Pretendard'; line-height: 24px; text-align: center; color: #4D4D4D; border-collapse: collapse;}
+    table thead tr th {font-weight: 400; border-top: 1px solid #2D2D2D; background-color: #F6F6F6;}
+    table thead tr th ~ th {border-left: 1px solid #ddd;}
+    table tbody tr td {border-top: 1px solid #ddd;}
+    table tbody tr td ~ td {border-left: 1px solid #ddd;}
+    tbody {border-bottom: 1px solid #ddd;}
+    /* ❗❗ box-sizing을 넣어야함 ❗❗ */
+    th, td {padding: 15px 27px; box-sizing: border-box !important; -webkit-box-sizing:border-box; -moz-box-sizing:border-box;}
+
+    /* ❗❗ 가로스크롤 생기려면 widtt, max-width, min-width를 넣어야함 ❗❗ */
+    .table1 thead tr .a {width: 242px; max-width: 242px; min-width: 242px;}
+    .table1 thead tr .b {width: 243px; max-width: 243px; min-width: 243px;}
+    .table1 thead tr .c {width: 421px; max-width: 421px; min-width: 421px;}
+    .table1 thead tr .d {width: 374px; max-width: 374px; min-width: 374px;}
+
+    .table2 thead tr .a {width: 268px; max-width: 268px; min-width: 268px;}
+    .table2 thead tr .b {width: 1012px; max-width: 1012px; min-width: 1012px;}
+    .table2 tbody tr .b {text-align: left;}
+
+    .table2 {margin-top: 40px;}
+  </style>
+</head>
+<body>
+  <!-- 🔔 1번째 테이블 -->
+  <table class="table1">
+    <thead>
+      <tr>
+        <th class="a">제공받는 자</th>
+        <th class="b">제공업무 및 목적</th>
+        <th class="c">제공업무 및 목적</th>
+        <th class="d">제공받는 자의 개인정보 보유 및 이용기간</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="tr">
+        <td class="a">보증공사</td>
+        <td class="b">분양 보증</td>
+        <td class="c">성명, 생년월일, 주소, 연락처, 동•호수</td>
+        <td class="d">보증업무 종료 시 까지</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 🔔 2번째 테이블 -->
+  <table class="table2">
+    <thead>
+      <tr>
+        <th class="a">위탁업무</th>
+        <th class="b">수탁사</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="a">서버/시스템 관리</td>
+        <td class="b">현대오토에버</td>
+      </tr>
+      <tr>
+        <td class="a">본인인증 서비스</td>
+        <td class="b">나이스평가정보</td>
+      </tr>
+      <tr>
+        <td class="a">고객문의/응대</td>
+        <td class="b">효성ITX㈜</td>
+      </tr>
+      <tr>
+        <td class="a">분양홍보 대행</td>
+        <td class="b">㈜건물과사람들, CLK 주식회사, CND Planning, 컬리넌홀딩스, ㈜더감, ㈜유티파트너스, 무궁화신탁</td>
+      </tr>
+      <tr>
+        <td class="a">입주관리 대행</td>
+        <td class="b">하우스토크㈜, ㈜아이하우스21그룹, 하우스앤피플㈜, ㈜피앤씨컨설팅, ㈜디앤파트너스, 라온디앤씨㈜, ㈜글로벌맨파워시스템, ㈜아파트너</td>
+      </tr>
+      <tr>
+        <td class="a">하자보수 대행</td>
+        <td class="b">(주)만도엔지니어링, (주)주은이앤씨, (주)세길건설, (주)세림티앤씨건설, (주)케이알건설, (주)선진티엔알, (주)거림디앤아이, (주)성덕이엔씨, (주)두레건설, (주)씨앤엠건설,(주)정마티씨, 민우엠앤씨(주), (주)킹대일, (주)삼진비티, 혜성알엔씨건설(주), (주)노은건설, (주)뉴램건설, 새암건설산업(주), (주)함백, (주)삼우아이티, 미래건설산업, 조이엘건설(주), (주)미래씨앤알, (주)대형에스엘, (주)해동건설, (주)월드이앤씨, (주)자오건설, 동명기산(주), 자암건설(주), (주)덕일산업</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

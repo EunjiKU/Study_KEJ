@@ -53,4 +53,23 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <!-- JavaScript -->
 <script src="./main.js"></script>
+<!-- 🔔 또 다른 방법 -->
+<script>
+  if($(".accordion_div").length > 0){
+    $(".accordion_div").each(function(index){
+      $(".accordion_div").eq(index).find("li").eq(0).find(".answer").slideDown(0);
+      $(".accordion_div").eq(index).find("li").eq(0).addClass("on");
+
+      $(this).find("li > a").on('click', function(){
+        if($(this).parents("li").hasClass("on") == false){
+          $(".accordion_div").eq(index).find("li").find(".answer").slideUp(250);
+          $(".accordion_div").eq(index).find("li").removeClass("on");
+
+          $(this).parents("li").find(".answer").slideDown(250);
+          $(this).parents("li").addClass("on");
+        }
+      })
+    })
+  };
+</script>
 </html>
