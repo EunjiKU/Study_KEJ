@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="37" height="25.586" viewBox="0 0 37 25.586">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 2px;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="gate-srch-icon" transform="translate(-88 -34.762)">
+    <path id="패스_156" data-name="패스 156" class="cls-1" d="M89.7,68.308V56.785l14-3.413V67.348h-6V44.334l14,6.555V68.334" transform="translate(-0.699 -8)"/>
+    <g id="그룹_1170" data-name="그룹 1170" transform="translate(4 -1)">
+      <rect id="사각형_90" data-name="사각형 90" class="cls-2" width="8" height="2" transform="translate(113 52)"/>
+      <rect id="사각형_91" data-name="사각형 91" class="cls-2" width="8" height="2" transform="translate(118 49) rotate(90)"/>
+    </g>
+  </g>
+</svg>

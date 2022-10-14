@@ -1,0 +1,34 @@
+<svg id="ico-chkbox" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: gray;
+      }
+
+      .cls-2, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-width: 2px;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="타원_35" data-name="타원 35" class="cls-1">
+    <circle class="cls-3" cx="12" cy="12" r="12"/>
+    <circle class="cls-4" cx="12" cy="12" r="11.5"/>
+  </g>
+  <g id="그룹_1269" data-name="그룹 1269" transform="translate(7.758 9.172)">
+    <path id="패스_5502" data-name="패스 5502" class="cls-2" d="M0,0H4" transform="translate(0 2.828) rotate(45)"/>
+    <path id="패스_5503" data-name="패스 5503" class="cls-2" d="M0,0H8" transform="translate(8.485 0) rotate(135)"/>
+  </g>
+</svg>

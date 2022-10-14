@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* form - input */
+    .form_input {display: inline-block; position: relative; vertical-align: middle; width: 100%;}
+    .form_input input {width: 100%; height: 48px; padding: 0 20px; color: #222; border: 1px solid #ddd; font-size: 16px;}
+    .form_input input:nth-of-type(2) {margin: 10px 0;}
+    .form_input input:focus {color: #222; border: 1px solid #333;}
+    .form_input input:disabled {color: #444; background-color: #F5F5F5; border: 1px solid #F5F5F5;}
+    .form_input input[type="text"]:read-only {color: #999; background-color: #F6F6F6; outline: none; border: 1px solid #ddd;}
+    .form_input input[type="tel"]:read-only {color: #999; background-color: #F6F6F6; outline: none; border: 1px solid #ddd;}
+    .form_input input[type="number"]:read-only {color: #999; background-color: #F6F6F6; outline: none; border: 1px solid #ddd;}
+    .form_input input[type="number"]::-webkit-outer-spin-button, .form_input input[type="number"]::-webkit-inner-spin-button {-webkit-appearance: none; margin: 0;}
+    .form_input.width_btn input {width: calc(100% - 104px);}
+    .form_input.width_btn a {display: inline-block; width: 88px; height: 48px; border: 1px solid #2D2D2D; text-align: center; line-height: 47px; position: absolute; right: 0; font-size: 14px;}
+    .form_input.address input:first-child {width: calc(100% - 132px);}
+    .form_input.address input {width: 100%;}
+    .form_input.address a {display: inline-block; width: 116px; height: 48px; border: 1px solid #2D2D2D; text-align: center; line-height: 47px; position: absolute; right: 0;}
+    .form_input .msg {font-size: 14px; color: #727272; margin-top: 17px;}
+    .form_input input:nth-of-type(2) + .msg {font-size: 14px; color: #727272; margin-top: 7px;}
+    .form_input .msg + .msg {margin-top: 8px;}
+
+    /* form - textarea */
+    .form_input textarea {width: 100%; min-height: 136px; padding: 15px 20px; color: #222; border: 1px solid #ddd; font-size: 16px; font-family: "Pretendard-Regular";}
+    .form_input textarea:focus {color: #222; border: 1px solid #333;}
+    .form_input textarea:disabled {color: #444; background-color: #F5F5F5; border: 1px solid #F5F5F5;}
+
+    /* form - date */
+    .form_input input[type="date"] {position: relative; transition: all 0.2s; -webkit-appearance: none; -moz-appearance: none; background: #fff; }
+    .form_input input[type="date"]::-webkit-date-and-time-value {text-align: left;}
+    .form_input input[type="date"]:disabled {opacity: 0.5; background: #fff; border: 1px solid rgba(0, 0, 0, .1);}
+    .form_input input[type="date"]:read-only {opacity: 0.5; background: #fff; border: 1px solid rgba(0, 0, 0, .1);}
+    .form_input input[type="date"]::-webkit-calendar-picker-indicator {position: absolute; right: 20px; opacity: 0; cursor: pointer; z-index: 10;}
+    .form_input input[type="date"]::after {content: ""; background: url(../images/ico-date.svg); width: 24px; height: 24px; display: inline-block; position: absolute; top: 50%; right: 18px; transform: translateY(-50%);}
+    .form_input input[type="date"]::before {content: ""; display: block; position: absolute; top: 18px; right: 20px; width: 24px; height: 24px; background: rgb(255, 255, 255, 0); z-index: 1;}
+    .form_input input[type="date"].ver1::before {content: ""; display: none; position: absolute; top: 18px; right: 20px; width: 24px; height: 24px; background: rgb(255, 255, 255, 0); z-index: 1;}
+
+    /* form - file */
+    .form_input_file .width_msg {display: flex;}
+    .form_input_file input[type="file"] {position: absolute; width: 0; height: 0;	padding: 0;	overflow: hidden;	border: 0;}
+    .form_input_file label {display: inline-block; width: 88px; height: 48px; line-height: 47px; text-align: center; color: #222; cursor: pointer; border: 1px solid #2D2D2D; font-size: 14px; font-family: "Pretendard-Medium";}
+    .form_input_file .file_area {display: flex; flex-wrap: wrap; width: calc(100% - 88px); align-items: center; padding-top: 7px;}
+    .form_input_file .file_area .file_name {min-width: 150px; font-size: 14px; background: #F5F7FA; height: 36px; display: flex; justify-content: space-between; align-items: center; margin-left: 16px; padding-left: 12px; margin-bottom: 10px; border-radius: 2px;}
+    .form_input_file .file_area .file_name span {position: relative; padding-left: 30px; color: #4D4D4D;}
+    .form_input_file .file_area .file_name span::before {content: ""; width: 16px; height: 16px; display: inline-block; background: url("../images/ico-file.svg") no-repeat; position: absolute; top: 2px; left: 0; background-size: contain;}
+    .form_input_file .file_area .file_name a.delbt {display: inline-block; width: 20px; height: 20px; background: url("../images/ico-del.svg"); margin-right: 5px;}
+    .form_input_file .file_msg {color: #727272; font-size: 14px; margin-top: 7px;}
+
+    /* ❗❗❗ Select ❗❗❗ */
+    /* form - select */
+    .form_select {position: relative; display: inline-block; vertical-align: middle; width: 100%;}
+    .form_select select {border: 1px solid #ddd; position: relative; background-color: #fff; height: 48px; padding: 0 20px; font-size: 16px; width: 100%;}
+    .form_select:after {content: ""; display: block; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; background: url("./images/ico-selectboxq.svg") center center no-repeat; transition: transform .2s ease;}
+    .for_flex .form_select {width: 312px;}
+    .for_flex + .form_select {margin-top: 10px;}
+    .select_area {display: flex; justify-content: space-between;}
+    .select_area a {display: inline-block; width: 64px; height: 48px; border: 1px solid #2D2D2D; text-align: center; line-height: 47px; margin-left: 20px; font-size: 14px; font-family: "Pretendard-Medium";}
+    .select_area + .select_area {margin-top: 10px;}
+
+    /* ❗❗❗ CheckBox / Radio ❗❗❗ */
+    /* form - input - checkbox */
+    .form_checkbox {position: relative; margin-bottom: 33px;}
+    .form_checkbox:last-child {margin-bottom: 0;}
+    .form_checkbox input {position: absolute; top: 0; left: 0; width: 24px; height: 24px; opacity: .001;}
+    .form_checkbox input + label {position: relative; display: inline-block; background: url("./images/ico-chkbox1.svg") left 2px no-repeat; z-index: 1; padding-left: 40px; vertical-align: top;}
+    .form_checkbox.all_check input + label {font-family: "Pretendard-Medium";}
+    .form_checkbox input:checked + label {background: url("./images/ico-chkbox1-on.svg") left 2px no-repeat;}
+    .form_checkbox a {position: absolute; right: 0; font-size: 14px; color: #727272; text-decoration: underline;}
+
+    .form_checkbox.type2 input {position: absolute; top: 0; left: 0; width: 24px; height: 24px; opacity: .001;}
+    .form_checkbox.type2 input + label {position: relative; display: inline-block; background: url("./images/ico-chkbox1.svg") left top no-repeat; z-index: 1; padding-left: 40px; vertical-align: top; font-size: 16px;}
+    .form_checkbox.type2 input:checked + label {background: url("./images/ico-chkbox-on1.svg") left top no-repeat;}
+
+    /* form - input - raido */
+    .form_radio {display: inline-block; position: relative; vertical-align: middle;}
+    .form_radio + .form_radio {margin-left: 60px;}
+    .form_radio input {position: absolute; top: 0; left: 0; width: 24px; height: 24px; opacity: .001;}
+    .form_radio input + label {display: inline-block; padding-left: 36px; min-height: 24px; font-size: 14px; font-family: "Pretendard-Medium"; background: url("./images/ico-radio1.svg") left top no-repeat;}
+    .form_radio input:checked + label {background: url("./images/ico-radio1-on.svg") left top no-repeat;}
+    .flex_box .form_radio input + label {min-width: 120px;}
+    .flex_box .form_radio + .form_radio {margin-left: 30px;}
+  </style>
+</head>
+<body>
+  <!-- ❗❗❗ Select ❗❗❗ -->
+  <h2>Select</h2>
+  <div class="form_select">
+  <div class="form_select_arr">
+    <select name="" id="">
+      <option value="0">기본 select</option>
+      <option value="1">option1</option>
+      <option value="2">option2</option>
+      <option value="3">option3</option>
+    </select>              
+  </div>
+  <div class="form_error_msg">국가를 선택해 주세요.</div>
+</div>
+
+<div class="has_error_msg error">
+  <div class="form_select error">
+    <div class="form_select_arr w260">
+      <select name="" id="">
+        <option value="0">기본 select</option>
+        <option value="1">option1</option>
+        <option value="2">option2</option>
+        <option value="3">option3</option>
+      </select>
+    </div>
+  </div>
+  <div class="form_error_msg">국가를 선택해 주세요.</div>
+</div>
+
+  <!-- ❗❗❗ CheckBox / Radio ❗❗❗ -->
+  <h2>CheckBox / Radio</h2>
+  <div class="flex_box">
+    <div class="form_checkbox">
+      <input type="checkbox" id="check1" name="" checked>
+      <label for="check1">선택</label>
+    </div>
+    <div class="form_checkbox">
+      <input type="checkbox" id="check2" name="">
+      <label for="check2">비선택</label>
+    </div>
+  </div>
+
+  <div class="flex_box">
+    <div class="form_radio">
+      <input type="radio" id="radio1" name="radioSample" checked>
+      <label for="radio1">선택</label>
+    </div>
+    <div class="form_radio">
+      <input type="radio" id="radio2" name="radioSample">
+      <label for="radio2">비선택</label>
+    </div>
+  </div>
+</body>
+</html>

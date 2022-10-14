@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery</title>
+  <!-- CSS -->
+  <style>
+    body {padding: 40px;}
+    /* input#checkAll {
+      display: none;
+    } */
+</style>
+<body>
+  <h1>SKILLS</h1>
+  <p>
+    <input type="checkbox" id="checkAll">
+    <label for="checkAll">전체선택</label>
+  </p>
+  <br>
+  <p>
+    <input type="checkbox" name="chk" value="html5" id="html5">
+    <label for="html5">HTML5</label>
+  </p>
+  <p>
+    <input type="checkbox" name="chk" value="CSS" id="CSS">
+    <label for="CSS">CSS</label>
+  </p>
+  <p>
+    <input type="checkbox" name="chk" value="jquery" id="jquery">
+    <label for="jquery">jquery</label>
+  </p>
+  <p>
+    <input type="checkbox" name="chk" value="javascript" id="javascript">
+    <label for="javascript">javascript</label>
+  </p>
+
+  <!-- JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $(function() {
+      $("#checkAll").click(function() {
+        if ($("#checkAll").prop("checked")) {
+          $("input[name=chk]").prop("checked", true)
+        } else {
+          $("input[name=chk]").prop("checked", false)
+        }
+      });
+
+      $("input[name=chk]").click(function() {
+				var total = $("input[name=chk]").length;
+				var checked = $("input[name=chk]:checked").length;
+				
+				if(total != checked) $("#checkAll").prop("checked", false);
+				else $("#checkAll").prop("checked", true); 
+			});
+    });
+  </script>
+</head>
+</body>
+</html>

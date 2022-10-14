@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>체크박스 연습</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#cbx_chkAll").click(function() {
+				if($("#cbx_chkAll").is(":checked")) $("input[name=chk]").prop("checked", true);
+				else $("input[name=chk]").prop("checked", false);
+			});
+			
+			$("input[name=chk]").click(function() {
+				var total = $("input[name=chk]").length;
+				var checked = $("input[name=chk]:checked").length;
+				
+				if(total != checked) $("#cbx_chkAll").prop("checked", false);
+				else $("#cbx_chkAll").prop("checked", true); 
+			});
+		});
+	</script>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th><input type="checkbox" id="cbx_chkAll" /></th>
+				<th>체크박스 테스트</th>
+			</tr>	
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="checkbox" name="chk"></td>
+				<td>체크 1</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="chk"></td>
+				<td>체크 2</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="chk"></td>
+				<td>체크 3</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

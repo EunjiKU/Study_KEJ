@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="그룹_1292" data-name="그룹 1292" transform="translate(0.49)">
+    <rect id="사각형_157" data-name="사각형 157" width="80" height="80" transform="translate(-0.49)" fill="#f0f" opacity="0"/>
+    <g id="아이핀인증_icon" transform="translate(-1340.602 -600.461)">
+      <path id="패스_5513" data-name="패스 5513" d="M1369.927,629.9v-7.933a10.434,10.434,0,0,1,10.3-10.508h0a10.435,10.435,0,0,1,10.3,10.508V629.9" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      <circle id="타원_47" data-name="타원 47" cx="2.953" cy="2.953" r="2.953" transform="translate(1377.27 643.191)"/>
+      <line id="선_47" data-name="선 47" y1="8.218" transform="translate(1380.223 646.144)" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="패스_5517" data-name="패스 5517" d="M1403.335,637.026v29.736a2.006,2.006,0,0,1-2,2h-42.224a2.006,2.006,0,0,1-2-2V633.205a2.006,2.006,0,0,1,2-2h38.835Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    </g>
+  </g>
+</svg>
