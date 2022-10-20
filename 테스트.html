@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>힐스테이트</title>
+    <link rel="shortcut icon" href="../.../common/images/favicon.ico" />
+    <meta name="viewport"
+      content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0,target-densitydpi=medium-dpi" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.4/swiper-bundle.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../common/css/swiper.css" media="all" /> -->
+    <style>
+      * {margin: 0; padding: 0; box-sizing: border-box;}
+      a {text-decoration: none;}
+
+      .tab_type1 .swiper-slide {display: flex; width: auto; font-size: 20px; font-weight: 600; letter-spacing: -2px; color: #727272;}
+      .tab_type1 .swiper-slide.on {color: #961E1E;}
+      .tab_type1 .swiper-slide span {display: inline-block; position: relative; width: auto; height: 35px;}
+      .tab_type1 .swiper-slide span::after {content: ""; display: block; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: #961E1E; opacity: 0; transition-duration: 0.5s; transition-property: opacity;}
+      .tab_type1 .swiper-slide.on span::after {opacity: 1;}
+    </style>
+    <!-- <link rel="stylesheet" type="text/css" href="../common/css/common.css" media="all" /> -->
+  </head>
+<body>
+  <div class="wrapper">
+    <div class="tab_type1 swiper-container">
+      <div class="swiper-wrapper">
+        <a href="javascript:" class="swiper-slide">
+          <span>HOME</span>
+        </a>
+        <a href="javascript:" class="swiper-slide on">
+          <span>회원정보수정</span>
+        </a>
+        <a href="javascript:" class="swiper-slide">
+          <span>계약자서비스</span>
+        </a>
+        <a href="javascript:" class="swiper-slide">
+          <span>1:1 상담내역</span>
+        </a>
+        <a href="javascript:" class="swiper-slide">
+          <span>나의 관심단지</span>
+        </a>
+        <a href="javascript:" class="swiper-slide">
+          <span>A/S신청내역</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <!-- <script src="../common/js/jquery-1.12.4.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.4/swiper-bundle.min.js"></script>
+  <!-- <script src="../common/js/swiper.min.js"></script> -->
+  <script>
+    $(function(){
+      if($(".tab_type1 .swiper-slide").length > 0){
+          // 스와이퍼
+          var _tabtype1Swiper = new Swiper(".tab_type1.swiper-container", {
+            slidesPerView: "auto",
+            spaceBetween: 40,
+            breakpoints: {
+              500: {
+              },
+              768: {
+              },
+              1024: {
+              },
+              1600: {
+              },
+            },
+          });
+  
+          // 탭클릭
+          var currentTab1Num = 0;
+          $(".tab_type1 .swiper-slide").each(function(index){
+            $(this).on('click', function(){
+              $(".tab_type1 .swiper-slide").eq(currentTab1Num).removeClass("on");
+              currentTab1Num = index;
+              $(".tab_type1 .swiper-slide").eq(currentTab1Num).addClass("on");
+            });
+  
+            // 뉴 아이콘
+            if($(this).hasClass("new") == true){
+              $(this).append('<p class="newicon"></p>');
+            }
+          });
+        }
+    })
+  </script>
+  <!-- <script src="../common/js/common.js"></script> -->
+</body>
+
+</html>

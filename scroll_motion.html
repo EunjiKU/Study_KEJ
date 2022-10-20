@@ -36,15 +36,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollToPlugin.min.js"></script>
   <script>
     $(function() {
-
       $(window).on("scroll", function() {
         $(".scroll_motion").each(function (q) {
-
-          console.log(q);
-          console.log("$(window).scrollTop() : " + $(window).scrollTop() );
-          console.log("$(window).height() : " + $(window).height());
-          console.log('$(".scroll_motion").eq(q).offset().top : ' + $(".scroll_motion").eq(q).offset().top);
-          console.log("----------------")
 
           if($(window).scrollTop() + $(window).height() > $(".scroll_motion").eq(q).offset().top + 300){
             $(".scroll_motion").eq(q).addClass("active");

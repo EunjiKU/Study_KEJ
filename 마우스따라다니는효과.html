@@ -38,8 +38,8 @@
     <script>
         $(function(){
             var posX = 0, posY = 0;
-            $(window).mousemove(function(ev){
-                posX = ev.clientX;
+            $(window).mousemove(function(ev){   // 마우스가 움직일때마다
+                posX = ev.clientX;  // 값 받아오기
                 posY = ev.clientY;
                 $('div').css({
                     left : posX,
