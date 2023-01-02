@@ -1,0 +1,8 @@
+<svg id="Icon_GNB_Logout" data-name="Icon / GNB / Logout" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <rect id="ic_guidebox" width="48" height="48" fill="#f0f" opacity="0"/>
+  <g id="Icon" transform="translate(-231 12)">
+    <path id="패스_5600" data-name="패스 5600" d="M254,3h10V21H254" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="패스_5601" data-name="패스 5601" d="M257,12H246l3-4" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <line id="선_23" data-name="선 23" x2="3" y2="4" transform="translate(246 12)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>

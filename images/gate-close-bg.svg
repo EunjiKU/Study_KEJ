@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #832327;
+        opacity: 0.9;
+      }
+    </style>
+  </defs>
+  <path id="gate_close_bg" class="cls-1" d="M0,0,240,240H0Z" transform="translate(240 240) rotate(180)"/>
+</svg>

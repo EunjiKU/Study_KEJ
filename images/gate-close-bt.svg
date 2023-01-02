@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="23.414" height="23.414" viewBox="0 0 23.414 23.414">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g id="gate_close_bt" transform="translate(-1850.457 -57.677)">
+    <path id="패스_139" data-name="패스 139" class="cls-1" d="M1873.164,58.384l-22,22" transform="translate(0)"/>
+    <path id="패스_140" data-name="패스 140" class="cls-1" d="M1851.164,58.384l22,22" transform="translate(0)"/>
+  </g>
+</svg>

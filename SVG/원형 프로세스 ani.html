@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    
+    :root {
+      --l : 0;
+      --deg : 0;
+      --result : 0;
+    }
+    .s_donut {
+      position:absolute;
+      left:50%;
+      top:50%;
+      text-align:center;
+      transform:translate(-50%, -50%);
+    }
+    .donut1 {
+      stroke-dasharray:var(--l);
+      stroke-dashoffset:var(--l);
+      animation:drawDonut 3s infinite;
+    }
+    @keyframes drawDonut {
+      0% {
+        opacity:0;
+      }
+      100% {
+        opacity:1;
+        stroke-dashoffset:var(--result);
+      }
+    }
+    .txt {
+      animation:twinkle 3s infinite;
+    }
+    @keyframes twinkle {
+      0% {
+        opacity:0;
+      }
+      50% {
+        opacity:1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <svg class="s_donut" width="300" height="300">
+    <circle class="donut1" cx="150" cy="150" r="125" stroke="pink" stroke-width="50" fill="transparent" stroke-dasharray="0" stroke-dashoffset="0" data-per="75" transform="rotate(-90 150 150)"/>
+    <!--//rotate(각도, 기준점x, 기준점y) -->
+    <text class="txt" y="150" transform="translate(150)">
+      <tspan x="0" text-anchor="middle">Circle</tspan>
+    </text>
+  </svg>
+
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    var deg = 3.6 * (100 - parseInt($('.donut1').attr('data-per')));
+    var r = parseInt($('.donut1').attr('r'));
+    
+    $(':root').css({
+      '--l': r * 3.141592 * 2,
+      '--deg': deg.toString() + "deg",
+      '--result': 2 * 3.141592 * r * (deg / 360)
+    });
+  </script>
+</body>
+</html>

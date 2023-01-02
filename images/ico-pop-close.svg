@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g id="_BTN_Popup_Close" data-name="#BTN / Popup_Close" transform="translate(-1872 -980)">
+    <g id="Btn_Areabox" transform="translate(1872 980)" fill="none" stroke="#fff" stroke-width="1">
+      <rect width="48" height="48" stroke="none"/>
+      <rect x="0.5" y="0.5" width="47" height="47" fill="none"/>
+    </g>
+    <path id="합치기_1" data-name="합치기 1" d="M20009,20020v-9h-9v-2h9v-9h2v9h9v2h-9v9Z" transform="translate(1896.144 -27294.268) rotate(45)" fill="#2d2d2d"/>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="ic_Check" transform="translate(-1436 -805)">
+    <g id="ic_guidebox" transform="translate(1436 805)" fill="#fff" stroke="#961e1e" stroke-width="1">
+      <rect width="24" height="24" stroke="none"/>
+      <rect x="0.5" y="0.5" width="23" height="23" fill="none"/>
+    </g>
+    <path id="패스_5478" data-name="패스 5478" d="M18,24.25l4.5,4.5,7.5-7.5" transform="translate(1423.5 792.25)" fill="none" stroke="#961e1e" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+</svg>

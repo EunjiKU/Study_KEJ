@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" viewBox="0 0 200 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #832327;
+        opacity: 0.9;
+      }
+    </style>
+  </defs>
+  <path id="gate-srch" class="cls-1" d="M100.047,100H0L99.954.093V0L100,.046,100.047,0V.093L200,100Z"/>
+</svg>
