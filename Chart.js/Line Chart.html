@@ -25,34 +25,24 @@
     const context = document.getElementById("myChart");
 
     const myChart = new Chart(context, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: ["1월", "2월", "3월", "4월", "5월"],
         datasets: [{
           label: '나르😺',
           data: [-60, 50, 40, -30, 80],
-          borderSkipped: false,
-          borderWidth: 2,
-          borderRadius: 10,
-          borderColor: "red",
-          backgroundColor: "orange",
-          hoverBorderWidth: 4,
-          hoverBorderColor: "black",
-          hoverBackgroundColor: "yellow"
         }, {
           label: '토똥🐰',
           data: [-120, 160, 40, 70, 20],
-          borderSkipped: false,
-          borderWidth: 2,
-          borderRadius: 50,
-          borderColor: "gray",
-          backgroundColor: "lightgray",
-          hoverBorderWidth: 4,
-          hoverBorderColor: "black",
-          hoverBackgroundColor: "yellow"
+          stack: 0
+        }, {
+          label: '은지🐰',
+          data: [-10, 30, -100, 80, 20],
+          stack: 1
         }],
       },
       options: {
+        
         plugins: {
           legend: {
             position: 'top'

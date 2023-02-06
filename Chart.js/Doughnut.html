@@ -25,34 +25,19 @@
     const context = document.getElementById("myChart");
 
     const myChart = new Chart(context, {
-      type: 'bar',
+      type: 'doughnut',
       data: {
-        labels: ["1월", "2월", "3월", "4월", "5월"],
+        labels: ['츄르', '캔', '사료', '과자', '빙어'],
         datasets: [{
-          label: '나르😺',
-          data: [-60, 50, 40, -30, 80],
-          borderSkipped: false,
-          borderWidth: 2,
-          borderRadius: 10,
-          borderColor: "red",
-          backgroundColor: "orange",
-          hoverBorderWidth: 4,
-          hoverBorderColor: "black",
-          hoverBackgroundColor: "yellow"
-        }, {
-          label: '토똥🐰',
-          data: [-120, 160, 40, 70, 20],
-          borderSkipped: false,
-          borderWidth: 2,
-          borderRadius: 50,
-          borderColor: "gray",
-          backgroundColor: "lightgray",
-          hoverBorderWidth: 4,
-          hoverBorderColor: "black",
-          hoverBackgroundColor: "yellow"
+          label: '나르가 좋아하는 음식😺',
+          data: [200, 50, 40, 30, 80],
         }],
       },
       options: {
+        interaction: {
+      intersect: false,
+      axis: 'x'
+    },
         plugins: {
           legend: {
             position: 'top'

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {background-color: lightgray;}
+    #wrap {display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh;}
+    #wrap > div {width: 500px; border-radius: 50px; background-color: #fff;}
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div>
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const context = document.getElementById("myChart");
+    const myChart = new Chart(context, {
+      type: "bar",
+      data: {
+        labels: ['1월', '2월', '3월', '4월', '5월'],
+        datasets: [{
+          label: '나르',
+          data: [40, 80, -20, 0, 100]
+        }, {
+          label: '토똥',
+          data: [60, -20, 100, -10, 90]
+        }, {
+          label: '은지',
+          data: [-20, 10, 40, -60, -40]
+        }]
+      },
+      options: {
+        animations: {
+          tension: {
+            duration: 1000,
+            easing: 'linear',
+            from: 1,
+            to: 0,
+            loop: true
+          }
+        },
+        scales: {
+          x: {
+            stacked: true,
+          },
+          y: {
+            stacked: true
+          }
+        },
+        layout: {
+          padding: 20
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: "❤️달마다 귀여운 수치❤️"
+          },
+        }
+      }
+    })
+  </script>
+</body>
+</html>

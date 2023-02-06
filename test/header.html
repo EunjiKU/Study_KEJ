@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TEST</title>
+    <!-- CSS -->
+    <style>
+      * {margin: 0; padding: 0; box-sizing: border-box;}
+      ul, li {list-style: none;}
+      a {text-decoration: none; color: #000;}
+
+      body {background-color: gray;}
+
+      /* header */
+      header {height: 80px; overflow: hidden; background-color: #fff; transition: all .4s;}
+      header.active {height: 400px; background-color: #000; border-radius: 0 0 50% 50%;}
+      header.active a {color: #fff !important;}
+      header > div {display: flex; justify-content: space-between; align-items: center; width: 90%; max-width: 1280px; height: 80px; margin: 0 auto;}
+      header .logo a {color: #000;}
+      header .menu {display: flex; flex: 1 1 auto; justify-content: space-between; height: 100%; margin: 0 20%;}
+      header .menu > li {width: 100%; height: 100%;}
+      header .menu > li > a {display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-weight: bold; color: #000;}
+      header .menu > li .submenu {display: none; width: 100%;}
+      header .menu > li .submenu > li ~ li {margin-top: 10px;}
+      header .menu > li .submenu > li > a {position: relative; display: inline-block; width: 100%; padding: 10px 0; color: #000; text-align: center; opacity: .5;}
+      header .menu > li .submenu > li > a::before {content: ''; position: absolute; left: 4px; top: 20px; width: 4px; height: 4px; background-color: #fff; border-radius: 100%; opacity: 0; transition: all .4s;}
+      header .menu > li .submenu > li > a:hover::before {opacity: 1;}
+      header nav {display: flex;}
+      header nav a {position: relative; color: #000;}
+      header nav a::before {content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 1px; background-color: #fff; transition: all .4s; opacity: 0;}
+      header nav a:hover::before {width: 100%; opacity: 1;}
+      header nav a + a {margin-left: 10px;}
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1 class="logo"><a href="javascript:">logo</a></h1>
+        <ul class="menu">
+          <li>
+            <a href="javascript:">MENU1</a>
+            <ul class="submenu">
+              <li><a href="javascript:">menu01</a></li>
+              <li><a href="javascript:">menu02</a></li>
+              <li><a href="javascript:">menu03</a></li>
+              <li><a href="javascript:">menu04</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="javascript:">MENU2</a>
+            <ul class="submenu">
+              <li><a href="javascript:">menu01</a></li>
+              <li><a href="javascript:">menu02</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="javascript:">MENU3</a>
+            <ul class="submenu">
+              <li><a href="javascript:">menu01</a></li>
+              <li><a href="javascript:">menu02</a></li>
+              <li><a href="javascript:">menu03</a></li>
+              <li><a href="javascript:">menu04</a></li>
+              <li><a href="javascript:">menu05</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="javascript:">MENU4</a>
+            <ul class="submenu">
+              <li><a href="javascript:">menu01</a></li>
+              <li><a href="javascript:">menu02</a></li>
+              <li><a href="javascript:">menu03</a></li>
+              <li><a href="javascript:">menu04</a></li>
+              <li><a href="javascript:">menu05</a></li>
+              <li><a href="javascript:">menu06</a></li>
+            </ul>
+          </li>
+        </ul>
+        <nav>
+          <a href="javascript:">login</a>
+          <a href="javascript:">mypage</a>
+        </nav>
+      </div>
+    </header>
+    
+    <!--  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+      $(function(){
+        $("header").on("mouseover", function() {
+          $(this).addClass("active");
+          $(".submenu").stop().slideDown();
+        });
+        $("header").on("mouseout", function() {
+          $(this).removeClass("active");
+          $(".submenu").stop().slideUp();
+        });
+      });
+    </script>
+  </body>
+</html>
