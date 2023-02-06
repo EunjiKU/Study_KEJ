@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {background-color: #ddd;}
+    div {width: 700px; background-color: #fff; border-radius: 40px;}
+  </style>
+</head>
+<body>
+  <div>
+    <canvas id="myChart1"></canvas>
+  </div>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    var context1 = document.getElementById("myChart1");
+    var myChart1 = new Chart(context1, {
+      type: 'bar',  // ⭐차트의 형태
+      data: { // ⭐차트에 들어갈 데이터
+        labels: ['A', 'B', 'C', 'D'], // x축
+        datasets: [{  // ⭐데이터
+          label: '에이',  // ⭐차트 제목
+          data: [200, 100, 250, 200, 100],  // ⭐x축 label에 대응되는 데이터 값
+          backgroundColor: ['red', 'blue', 'orange', 'green'],
+          borderColor: ['blue', 'orange', 'green', 'red'],
+          borderWidth: 4,
+          hoverBorderWidth: 8,
+        }],
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: '옵션 플러그인 타이틀',
+            padding: {
+              bottom: 10,
+            },
+            color: 'brown'
+          },
+          legend: {
+            display: true,
+            position: 'right'
+          },
+          tooltip: {
+            enabled: false,
+          },
+        },
+        // plugins 끝
+        layout: {
+          padding: {
+            top: 40,
+            bottom: 20,
+            left: 40,
+            right: 40
+          }
+        }
+      },
+    });
+  </script>
+</body>
+</html>

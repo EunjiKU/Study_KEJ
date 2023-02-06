@@ -66,18 +66,22 @@
     // 준비가 되면 함수실행
     $(function() {
       commonScript.windowScroll();
+      console.log($(window).height()/4)
     })
+
 
     // 위 함수 정의한 것들
     var commonScript = (function(){
 
       var _getScrollObjY = function () {
-      var _arrY = [];
-      $(".scroll_motion").each(function (q) {
-        _arrY.push(parseInt($(".scroll_motion").eq(q).offset().top) + ($(".colorful-bg").hasClass("scroll_motion") ? 350 : ($(window).height()/4)));
-      });
+        var _arrY = [];
+        $(".scroll_motion").each(function (q) {
+          // (조건) ? value1 : value2
+          // 조건이 참인 경우 value1 실행, 거짓인 경우 value2가 실행
+          _arrY.push(parseInt($(".scroll_motion").eq(q).offset().top) + ($(".colorful-bg").hasClass("scroll_motion") ? 350 : ($(window).height()/4)));
+        });
 
-      return _arrY;
+        return _arrY;
     };
 
 

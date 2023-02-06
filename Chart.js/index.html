@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chart.js</title>
+  <!-- CSS -->
+  <style>
+  </style>
+</head>
+<body>
+  <div>
+    <canvas id="myChart1"></canvas>
+    <canvas id="myChart2"></canvas>
+    <canvas id="myChart3"></canvas>
+    <canvas id="myChart4"></canvas>
+  </div>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx1 = document.getElementById('myChart1');
+    const ctx2 = document.getElementById('myChart2');
+    const ctx3 = document.getElementById('myChart3');
+    const ctx4 = document.getElementById('myChart4');
+  
+    new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+        datasets: [{
+          label: 'Chart.js, 기본구성',
+          data: [12, 19, 3, 5, 2],
+        }]
+      }
+    });
+
+    new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+        datasets: [{
+          label: 'Chart.js, Datasets',
+          data: [200, 100, 250, 200, 100],
+          backgroundColor: ['red', 'blue', 'yellow', 'green', 'purple'],
+          borderWidth: 4,
+          hoverBorderWidth: 8 ,
+          borderColor: 'black',
+        }],
+      }
+    });
+
+    new Chart(ctx3, {
+      type: 'bar',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+        datasets: [{
+          label: 'Chart.js, Options',
+          data: [200, 100, 250, 200, 100],
+          backgroundColor: ['red', 'blue', 'yellow', 'green', 'purple'],
+          borderWidth: 4,
+          hoverBorderWidth: 8 ,
+          borderColor: 'black',
+        }],
+      },
+      options: {
+        plugins: {
+          // ⭐ 차트 제목
+          title: {
+              display: true,
+              text: '옵션 플러그인 타이틀',
+              padding: {
+                // top: 100,
+                // bottom: 10
+              },
+              color: 'red',
+          },
+          // ⭐ 차트 표 이름
+          legend: {
+            display: true,
+            position: 'top',
+          },
+          // ⭐ 차트에 호버시 나오는 상세 내용
+          tooltip: {
+            enabled: false,
+          }
+        },
+        layout: {
+            padding: {
+              top: 50,
+              bottom: 0,
+              left: 80,
+              right: 40
+            }
+        }
+      }
+    });
+
+    new Chart(ctx4, {
+      type: 'pie',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+        datasets: [{
+          label: 'Chart.js, Options',
+          data: [200, 100, 250, 200, 100],
+          backgroundColor: ['red', 'blue', 'yellow', 'green', 'purple'],
+          borderWidth: 4,
+          hoverBorderWidth: 8 ,
+          borderColor: 'black',
+        }],
+      },
+      options: {
+        plugins: {
+          // ⭐ 차트 제목
+          title: {
+              display: true,
+              text: '옵션 플러그인 타이틀',
+              padding: {
+                // top: 100,
+                // bottom: 10
+              },
+              color: 'red',
+          },
+          // ⭐ 차트 표 이름
+          legend: {
+            display: true,
+            position: 'top',
+          },
+          // ⭐ 차트에 호버시 나오는 상세 내용
+          tooltip: {
+            enabled: true,
+          }
+        },
+        layout: {
+            padding: {
+              top: 50,
+              bottom: 0,
+              left: 80,
+              right: 40
+            }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
