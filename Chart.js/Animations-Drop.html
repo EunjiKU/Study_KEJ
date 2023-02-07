@@ -40,27 +40,20 @@
       },
       
       options: {
-        animation: {
-          onComplete: () => {
-            delayed = true;
-          },
-          delay: (context) => {
-            let delay = 0;
-            if (context.type === 'data' && context.mode === 'default' && !delayed) {
-              delay = context.dataIndex * 300 + context.datasetIndex * 100;
-            }
-            return delay;
-          },
-        },
-        scales: {
-          x: {
-            stacked: true,
-          },
+        animations: {
           y: {
-            stacked: true
+            easing: 'easeInOutElastic',
+            from: (ctx) => {
+              if (ctx.type === 'data') {
+                if (ctx.mode === 'default' && !ctx.dropped) {
+                  ctx.dropped = true;
+                  return 0;
+                }
+              }
+            }
           }
-        }
-      }
+        },
+      },
     })
   </script>
 </body>

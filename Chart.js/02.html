@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: lightgray;
+    }
+    div {
+      width: 300px;
+      height: 75px;
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+  <p>1</p>
+  <div>
+    <canvas id="blankcanvas1"></canvas>
+  </div>
+  <p>2</p>
+  <div>
+    <canvas id="blankcanvas2"></canvas>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const blankcanvas1 = document.getElementById("blankcanvas1").getContext('2d');
+    const blankcanvas2 = document.getElementById("blankcanvas2").getContext('2d');
+
+    blankcanvas1.fillStyle = "#FF0000";
+    blankcanvas1.fillRect(0, 0, 300, 75);
+
+    blankcanvas2.fillStyle = "#FF0000";
+    blankcanvas2.fillRect(0, 0, 300, 1);
+    blankcanvas2.fillRect(0, 10, 300, 1);
+    blankcanvas2.fillRect(0, 20, 300, 1);
+    blankcanvas2.fillRect(0, 30, 300, 1);
+    blankcanvas2.fillRect(0, 0, 1, 75);
+    blankcanvas2.fillRect(10, 0, 1, 75);
+    blankcanvas2.fillRect(20, 0, 1, 75);
+    blankcanvas2.fillRect(30, 0, 1, 75);
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {background-color: lightgray;}
+    #wrap {display: flex; width: 100%; height: 100vh; justify-content: center; align-items: center;}
+    #wrap > div {width: 500px; border-radius: 30px; background-color: #fff;}
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div>
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    var ctx = document.getElementById("myChart");
+    var chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월'],
+        datasets: [{
+          label: '나르❤',
+          data: [1, 10, 5, 2, 20, 30, 45],
+          // backgroundColor: ["red", "blue", "green"],
+          // borderColor: ["yellow", "pink", "brown", "purple"],
+          // borderWidth: 4
+        },{
+          label: '토똥❤',
+          data: [15, 10, 7, 40, 4, 24, 50],
+          // backgroundColor: ["red", "blue", "green"],
+          // borderColor: ["yellow", "pink", "brown", "purple"],
+          // borderWidth: 4
+        },{
+          label: '은지❤',
+          data: [40, 24, 32, 10, 1, 50, 23],
+          // backgroundColor: ["red", "blue", "green"],
+          // borderColor: ["yellow", "pink", "brown", "purple"],
+          // borderWidth: 4
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false,
+          }
+        },
+        // scale: {
+        //   x: {
+        //     stacked: true,
+        //   },
+        //   y: {
+        //     stacked: true,
+        //   }
+        // }
+      }
+    });
+    var test = chart.options.plugins.legend.display;
+    console.log(test);
+  </script>
+</body>
+</html>
