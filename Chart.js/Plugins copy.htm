@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* * {margin: 0; padding: 0; box-sizing: border-box;} */
+    body {background-color: #ddd;}
+    div {width: 700px; background-color: #fff; border-radius: 40px;}
+  </style>
+</head>
+<body>
+  <div>
+    <canvas id="myChart"></canvas>
+  </div>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const context = document.getElementById("myChart");
+    const myChart = new Chart(context, {
+      type: 'bar',
+      data: {
+        labels: ["1월", "2월", "3월", "4월", "5월"],
+        datasets: [{
+          label: '나르😺',
+          data: [-60, 50, 40, -30, 80],
+        }, {
+          label: '토똥🐰',
+          data: [-120, 160, 40, 70, 20],
+        }],
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: '옵션 플러그인 타이틀',
+            padding: {
+              bottom: 10,
+            },
+            color: 'brown'
+          },
+          legend: {
+            display: true,
+            position: 'right'
+          },
+          tooltip: {
+            enabled: true,
+          },
+        }
+      },
+    });
+  </script>
+</body>
+</html>
